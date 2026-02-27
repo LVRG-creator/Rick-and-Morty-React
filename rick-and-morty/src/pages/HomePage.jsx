@@ -5,10 +5,10 @@ export default function HomePage() {
     <div style={{ padding: "2rem", textAlign: "center" }}>
       
       {/* big loud text to grab attention */}
-      <h1 className="text-5xl text-red500">Wubba Lubba Dub Dub!</h1>
+      <h1 className="text-5xl text-red500">Watch Rick and Morty — portal gun not included!</h1>
 
       {/* tiny hype message for the show */}
-      <p>Watch Rick and Morty — portal gun not included.</p>
+      <p>Our producer/director is NOT a weirdo ;)</p>
     </div>
   );
 }

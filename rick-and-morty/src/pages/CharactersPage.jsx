@@ -36,11 +36,16 @@ export default function CharactersPage() {
     try {
       const url = `https://rickandmortyapi.com/api/character/?name=${searchName}`;
       const response = await axios.get(url);
-      setCharacters(response.data.results);
-    } catch (error) {
-      console.log("bro API said nope:", error);
-      setCharacters([]);
-    }
+
+      const filtered = response.data.results.filter((char) =>
+        char.name.toLowerCase().includes(searchName.toLowerCase())
+      );
+
+      setCharacters(filtered);
+} catch (error) {
+  console.log("bro API said nope:", error);
+  setCharacters([]);
+}
   }
 
   function isFavorite(char) {
@@ -76,7 +81,14 @@ export default function CharactersPage() {
         )}
 
       </div>
-
+      
+      <div>
+        {characters.length === 0 && searchName.trim() !== "" && (
+          <p className="text-black-500 font-black text-center mb-20">
+            No characters found BRUV. Try something different you silly goose.
+          </p>
+        )}
+      </div>
       <div className="row">
         {characters.map((char) => (
           <div key={char.id} className="col-md-3 mb-4 transition-transform duration-300 hover:scale-110">
